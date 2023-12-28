@@ -9,6 +9,8 @@ let sandwichPrices = {
   "bondiola": 7500,
   "crudo": 7500
 };
+let carrito = {};
+
 let sandwichArray = Object.keys(sandwichPrices);
 
 function consultarPrecio(variedad) {
@@ -24,6 +26,21 @@ function ordenarPorPrecio() {
     return sandwichPrices[a] - sandwichPrices[b];
   });
   alert("Los sándwiches ordenados por precio son: " + sandwichArray.join(", "));
+}
+function agregarAlCarrito(variedad) {
+  if (sandwichObj[variedad]) {
+    carrito[variedad] = sandwichObj[variedad].precio;
+    alert(variedad + " agregado al carrito.");
+  } else {
+    alert("Lo siento, no tenemos esa variedad de sándwich.");
+  }
+}
+function calcularTotal() {
+  let total = 0;
+  for (let sandwich in carrito) {
+    total += carrito[sandwich];
+  }
+  alert("El total de los sándwiches en el carrito es: $" + total);
 }
 
 let keepGoing = true;
